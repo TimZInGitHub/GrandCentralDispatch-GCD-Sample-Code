@@ -26,7 +26,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9e-uc-Af6">
-                                <rect key="frame" x="20" y="69" width="288" height="30"/>
+                                <rect key="frame" x="20" y="50" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="异步函数+主队列:不会开线程,任务串行执行"/>
                                 <connections>
@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0z-mv-TTz">
-                                <rect key="frame" x="20" y="118" width="313" height="30"/>
+                                <rect key="frame" x="20" y="79" width="313" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="同步函数+串行队列:不会开线程,任务串行执行"/>
                                 <connections>
@@ -42,7 +42,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06w-GZ-O1M">
-                                <rect key="frame" x="20" y="166" width="313" height="30"/>
+                                <rect key="frame" x="20" y="107" width="313" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="同步函数+并发队列:不会开线程,任务串行执行"/>
                                 <connections>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOp-5W-0Le">
-                                <rect key="frame" x="20" y="214" width="342" height="32"/>
+                                <rect key="frame" x="20" y="137" width="342" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal">
                                     <string key="title">异步函数+串行队列:会开启一条线程,任务串行执行
@@ -61,16 +61,29 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHT-XZ-ehb">
-                                <rect key="frame" x="20" y="267" width="303" height="30"/>
+                                <rect key="frame" x="20" y="168" width="303" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="异步函数+并发队列:会开启新的线程,并发执行"/>
                                 <connections>
                                     <action selector="asyncCONCURRENT:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GSK-xH-2jY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJ7-QU-3kV">
+                                <rect key="frame" x="18" y="201" width="344" height="30"/>
+                                <state key="normal" title="等2个异步操作都执行完毕后,再回到主线程执行操作"/>
+                                <connections>
+                                    <action selector="groupNotify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zy6-TB-g59"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jKx-6I-OUd">
+                                <rect key="frame" x="20" y="231" width="200" height="200"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="jKx-6I-OUd" id="wrR-ee-ws4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
