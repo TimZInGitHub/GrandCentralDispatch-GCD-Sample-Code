@@ -78,6 +78,34 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jKx-6I-OUd">
                                 <rect key="frame" x="20" y="231" width="200" height="200"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-wW-VaY">
+                                <rect key="frame" x="20" y="428" width="298" height="30"/>
+                                <state key="normal" title="使用dispatch_apply函数能进行快速迭代遍历"/>
+                                <connections>
+                                    <action selector="apply:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eCE-x8-zva"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxJ-zT-DCP">
+                                <rect key="frame" x="20" y="456" width="466" height="30"/>
+                                <state key="normal" title="使用dispatch_once函数能保证某段代码在程序运行过程中只被执行1次"/>
+                                <connections>
+                                    <action selector="once:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PWh-df-fWV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQf-Qv-euS">
+                                <rect key="frame" x="20" y="486" width="188" height="30"/>
+                                <state key="normal" title="使用dispatch_after延时执行"/>
+                                <connections>
+                                    <action selector="after:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pOH-PD-WNl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDp-NI-jv9">
+                                <rect key="frame" x="18" y="514" width="187" height="30"/>
+                                <state key="normal" title="使用dispatch_barrier_async"/>
+                                <connections>
+                                    <action selector="barrier:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1pP-bq-Bhq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

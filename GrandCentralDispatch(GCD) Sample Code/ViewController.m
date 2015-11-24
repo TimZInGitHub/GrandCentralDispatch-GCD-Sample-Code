@@ -24,6 +24,95 @@
     
 }
 
+    //dispatch_queue_priority_t priority, // 队列的优先级!
+
+
+    //使用dispatch_barrier_async
+- (IBAction)barrier:(id)sender
+{
+        //1.创建队列(并发队列)
+    dispatch_queue_t queue = dispatch_queue_create("com.downloadqueue", DISPATCH_QUEUE_CONCURRENT);
+    
+    dispatch_async(queue, ^{
+        
+        for (NSInteger i = 0; i<10; i++) {
+            NSLog(@"%zd-download1--%@",i,[NSThread currentThread]);
+        }
+    });
+    
+    dispatch_async(queue, ^{
+        
+        for (NSInteger i = 0; i<10; i++) {
+            NSLog(@"%zd-download2--%@",i,[NSThread currentThread]);
+        }
+    });
+    
+        //栅栏函数
+    dispatch_barrier_async(queue, ^{
+        NSLog(@"我是一个栅栏函数");
+    });
+    
+    dispatch_async(queue, ^{
+        
+        for (NSInteger i = 0; i<10; i++) {
+            NSLog(@"%zd-download3--%@",i,[NSThread currentThread]);
+        }
+    });
+    
+    dispatch_async(queue, ^{
+        
+        for (NSInteger i = 0; i<10; i++) {
+            NSLog(@"%zd-download4--%@",i,[NSThread currentThread]);
+        }
+    });
+}
+
+    //使用dispatch_after延时执行
+- (IBAction)after:(id)sender
+{
+    NSLog(@"----");
+        //表名2秒钟之后调用run
+        //    [self performSelector:@selector(run) withObject:nil afterDelay:2.0];
+    
+        //    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(run) userInfo:nil repeats:YES];
+    
+    /*
+     第一个参数:延迟时间
+     第二个参数:要执行的代码
+     */
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
+        NSLog(@"---%@",[NSThread currentThread]);
+    });
+}
+
+    //使用dispatch_once函数能保证某段代码在程序运行过程中只被执行1次
+- (IBAction)once:(id)sender
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSLog(@"+++++++++");
+    });
+}
+
+    //使用dispatch_apply函数能进行快速迭代遍历
+- (IBAction)apply:(id)sender
+{
+        //    for (NSInteger i=0; i<10; i++) {
+        //        NSLog(@"%zd--%@",i,[NSThread currentThread]);
+        //    }
+
+        //创建队列(并发队列)
+    dispatch_queue_t queue = dispatch_queue_create("com.downloadqueue", DISPATCH_QUEUE_CONCURRENT);
+    /*
+     第一个参数:迭代的次数
+     第二个参数:在哪个队列中执行
+     第三个参数:block要执行的任务
+     */
+    dispatch_apply(10, queue, ^(size_t index) {
+        NSLog(@"%zd--%@",index,[NSThread currentThread]);
+    });
+}
+
     //等2个异步操作都执行完毕后,再回到主线程执行操作
 - (IBAction)groupNotify:(id)sender
 {
